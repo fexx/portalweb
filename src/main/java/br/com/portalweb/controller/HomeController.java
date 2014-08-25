@@ -10,7 +10,7 @@ public class HomeController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() throws Exception{
-        return new ModelAndView("home");
+        return new ModelAndView("cadOperadora");
 	}
 
 }
