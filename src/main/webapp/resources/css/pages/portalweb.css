@@ -54,7 +54,9 @@ Bootstrap Admin Template by EGrappler.com
 	color: #545454;
 }
 
-
+#tblAddEdit{
+	display: none;
+}
 
 /*------------------------------------------------------------------
 [2. Stats / .stats]

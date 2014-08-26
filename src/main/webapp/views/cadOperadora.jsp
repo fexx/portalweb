@@ -25,7 +25,7 @@
 	<div class=container>
 	
 
-		<table class="table table-striped">
+		<table class="table table-striped" id="tblOperadoras">
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -58,7 +58,7 @@
 		
 		<form class="form" >
 		
-			<div class="table-responsive">
+			<div class="table-responsive" id="tblAddEdit" style="display:none" >
 				<table class="table ">
 					<thead>
 						<tr>
@@ -149,12 +149,13 @@
 						
 					</tbody>
 				</table>
-			</div>
+			
 		
-			<input type="hidden" value="" ng-model="operadora.id">
+				<input type="hidden" value="" ng-model="operadora.id">
 	
-			<button ng-click="postUser()" class="btn btn-success dropdown-toggle">Send user</button>
-			<button ng-click="putUser()" class="btn btn-primary dropdown-toggle" disabled="disabled">Edit user</button>
+				<button ng-click="postUser()" class="btn btn-success dropdown-toggle">Send user</button>
+				<button ng-click="putUser()" class="btn btn-primary dropdown-toggle" disabled="disabled">Edit user</button>
+			</div>
 		</form>
 		
 	</div>

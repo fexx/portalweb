@@ -9,10 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import br.com.portalweb.dao.generic.BaseEntity;
 
 @Entity
 @Table(name = "CAD_OPERADORA")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CadOperadora implements BaseEntity<Long>, Serializable {
 
 	/**
