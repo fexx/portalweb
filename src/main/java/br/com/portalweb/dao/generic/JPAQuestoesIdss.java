@@ -7,22 +7,21 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.portalweb.dao.impl.CadOperadoraDAO;
-import br.com.portalweb.model.CadOperadora;
-import br.com.portalweb.model.CrmPessoa;
+import br.com.portalweb.dao.impl.QuestoesIdssDAO;
+import br.com.portalweb.model.QuestoesIdss;
 
 @Transactional(propagation = Propagation.REQUIRED)
-@Repository("cadOperadoraDAO")
-public class JPACadPessoa extends JPADAO<CadOperadora, Long> implements CadOperadoraDAO{
+@Repository("QuestoesIdssDAO")
+public class JPAQuestoesIdss extends JPADAO<QuestoesIdss, Long> implements QuestoesIdssDAO{
 
 	@PersistenceContext
 	private EntityManager manager;
 
-	protected Class<CrmPessoa> clazz;
+	protected Class<QuestoesIdss> clazz;
 
 	@Override
-	protected Class<CadOperadora> getClazz() {
-		return CadOperadora.class;
+	protected Class<QuestoesIdss> getClazz() {
+		return QuestoesIdss.class;
 	}
 	
 }

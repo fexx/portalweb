@@ -68,24 +68,21 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="col-md-4">Razão Social</td>
-							<td class="col-md-6"><input type="text" ng-model="operadora.razaoSocial" class="form-control" maxlength="512" ></td>
+							<td>Razão Social</td>
+							<td><input type="text" ng-model="operadora.razaoSocial" class="input-large" maxlength="512" ></td>
+							
+							<td>Registro ANS</td>
+							<td><input type="text" ng-model="operadora.registroANS" class="form-control" maxlength="16" ></td>
+							
 						</tr>
 						
 						<tr>
 							<td>Nome Fantasia</td>
 							<td><input type="text" ng-model="operadora.nomeFantasia" class="form-control" maxlength="512" ></td>
-						</tr>	
 						
-						<tr>
 							<td>CNPJ</td>
 							<td><input type="text" ng-model="operadora.cnpj" class="form-control" maxlength="18" ></td>
 						</tr>						
-
-						<tr>
-							<td>Registro ANS</td>
-							<td><input type="text" ng-model="operadora.registroANS" class="form-control" maxlength="16" ></td>
-						</tr>	
 
 						<tr>
 							<td>Logradouro</td>
@@ -95,9 +92,7 @@
 						<tr>
 							<td>Número</td>
 							<td><input type="text" ng-model="operadora.numeroLogradouro" class="form-control" maxlength="32" ></td>
-						</tr>	
-						
-						<tr>
+							
 							<td>Complemento</td>
 							<td><input type="text" ng-model="operadora.complemento" class="form-control" maxlength="32" ></td>
 						</tr>							
@@ -105,9 +100,7 @@
 						<tr>
 							<td>Bairro</td>
 							<td><input type="text" ng-model="operadora.bairro" class="form-control" maxlength="64" ></td>
-						</tr>	
 
-						<tr>
 							<td>Cidade</td>
 							<td><input type="text" ng-model="operadora.cidade" class="form-control" maxlength="64" ></td>
 						</tr>	
@@ -115,9 +108,7 @@
 						<tr>
 							<td>Estado (UF)</td>
 							<td><input type="text" ng-model="operadora.uf" class="form-control" maxlength="2" ></td>
-						</tr>	
-						
-						<tr>
+
 							<td>CEP</td>
 							<td><input type="text" ng-model="operadora.cep" class="form-control" maxlength="9" ></td>
 						</tr>							
@@ -125,14 +116,10 @@
 						<tr>
 							<td>Tel DDD</td>
 							<td><input type="text" ng-model="operadora.telDDD" class="form-control" maxlength="2" ></td>
-						</tr>							
-						
-						<tr>
+
 							<td>Telefone</td>
 							<td><input type="text" ng-model="operadora.telefone" class="form-control" maxlength="256" ></td>
-						</tr>							
-						
-						<tr>
+
 							<td>Fax</td>
 							<td><input type="text" ng-model="operadora.fax" class="form-control"  maxlength="256" ></td>
 						</tr>							
@@ -140,9 +127,7 @@
 						<tr>
 							<td>E-mail do responsável</td>
 							<td><input type="text" ng-model="operadora.emailResponsavel" class="form-control" maxlength="512" ></td>
-						</tr>							
 
-						<tr>
 							<td>Site</td>
 							<td><input type="text" ng-model="operadora.site" class="form-control" maxlength="512" ></td>
 						</tr>	

@@ -5,7 +5,7 @@ function cadOperadoraController($scope, $window, $http) {
 	
 	$http.get('/portalweb/cadOperadora/lista').success(function(data) {
 		$scope.operadoras = data;
-	});
+	});	
 
     $scope.edit = function(operadora){
     	$("#tblAddEdit").show();
@@ -13,6 +13,7 @@ function cadOperadoraController($scope, $window, $http) {
     	$scope.operadora = operadora;
 		$(".btn-success").attr("disabled", "disabled");
 		$(".btn-primary").removeAttr("disabled");
+		
     };
 
     $scope.putUser = function () {
@@ -32,9 +33,12 @@ function cadOperadoraController($scope, $window, $http) {
     };    
     
     var reset = function(){
-    	
+    	console.log("resetou");
     	$scope.operadora = "";
     	
+    	$http.get('/portalweb/cadOperadora/lista').success(function(data) {
+    		$scope.operadoras = data;
+    	});   	
     };
     
 }

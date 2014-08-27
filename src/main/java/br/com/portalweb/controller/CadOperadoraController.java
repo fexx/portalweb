@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.portalweb.dao.impl.CadOperadoraDAO;
+import br.com.portalweb.dao.impl.CadOperadoraInfoDAO;
 import br.com.portalweb.exception.DAOException;
 import br.com.portalweb.model.CadOperadora;
+import br.com.portalweb.model.CadOperadoraInfo;
 
 @Controller
 @RequestMapping("/cadOperadora")
@@ -20,6 +22,9 @@ public class CadOperadoraController {
 
 	@Autowired
 	private CadOperadoraDAO cadOperadoraDAO;
+
+	@Autowired
+	private CadOperadoraInfoDAO cadOperadoraInfoDAO;
 	
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public @ResponseBody List<CadOperadora> listarOperadora() throws DAOException {
@@ -31,13 +36,13 @@ public class CadOperadoraController {
 	@Transactional
 	@RequestMapping(value = "/editarCadOperadora", method = RequestMethod.PUT, headers = {"content-type=application/json"})
 	public @ResponseBody void editarCadOperadora(@RequestBody CadOperadora operadora) throws DAOException {
-		/*
-		Categoria categoriaBD = categoriaDAO.find(categoria.getId());
-		categoriaBD.setDescricao(categoria.getDescricao());
-		Categoria update = categoriaDAO.update(categoriaBD);
-		*/
-		System.out.println("Teste");
 		cadOperadoraDAO.update(operadora);
 	}
-	
+
+	@RequestMapping(value = "/teste", method = RequestMethod.GET)
+	public @ResponseBody List<CadOperadoraInfo> teste() throws Exception {
+		List<CadOperadoraInfo> listaCadOperadora = cadOperadoraInfoDAO.list();
+		return listaCadOperadora;
+		
+	}	
 }

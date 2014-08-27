@@ -5,9 +5,14 @@
 
 		<persistence-unit name="Portalweb-PU" transaction-type="JTA"> 
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:/datasource/portalweb</jta-data-source>
+        <jta-data-source>java:/datasource/portalweb_local</jta-data-source>
+        
         <class>br.com.portalweb.model.CrmPessoa</class>
         <class>br.com.portalweb.model.CadOperadora</class>
+        <class>br.com.portalweb.model.CadOperadoraIdss</class>
+        <class>br.com.portalweb.model.CadOperadoraInfo</class>
+        <class>br.com.portalweb.model.OperadoraRespostaIdss</class>
+        <class>br.com.portalweb.model.QuestoesIdss</class>
         
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> 
