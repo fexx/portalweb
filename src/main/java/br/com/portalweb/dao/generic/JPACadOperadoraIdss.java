@@ -1,13 +1,19 @@
 package br.com.portalweb.dao.generic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.portalweb.dao.impl.CadOperadoraIdssDAO;
+import br.com.portalweb.exception.DAOException;
+import br.com.portalweb.model.CadOperadora;
 import br.com.portalweb.model.CadOperadoraIdss;
 
 @Transactional(propagation = Propagation.REQUIRED)
@@ -24,4 +30,16 @@ public class JPACadOperadoraIdss extends JPADAO<CadOperadoraIdss, Long> implemen
 		return CadOperadoraIdss.class;
 	}
 
+	public List<CadOperadoraIdss> listaIdssOperadora(CadOperadora cadOperadora) throws DAOException {
+		
+		List<CadOperadoraIdss> lista = new ArrayList<CadOperadoraIdss>();
+		TypedQuery<CadOperadoraIdss> jpql = this.manager.createQuery(" from " + CadOperadoraIdss.class.getSimpleName()
+				+ " where operadora = :cadOperadoraVal " , CadOperadoraIdss.class
+			);
+		jpql.setParameter("cadOperadoraVal", cadOperadora);
+		
+		lista = jpql.getResultList();
+		return lista;
+	}
+	
 }

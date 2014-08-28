@@ -18,43 +18,168 @@
 
 	<title>Cadastro de Operadoras</title>
 
-
 </head>
 
 <body ng-app ng-controller="cadOperadoraController">
-	<div class=container>
 	
+	<div class=container>
+		<div id="listaOperadoras" >
+			<table class="table table-striped" id="tblOperadoras">
+				<thead>
+					<tr>
+						<th>Operadora</th>
+						<th>Registo ANS</th>
+						<th>Nome Fantasia</th>
+						<th>Site</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="operadora in operadoras">
+						<td>{{operadora.razaoSocial}}</td>
+						<td>{{operadora.registroANS}}</td>
+						<td>{{operadora.nomeFantasia}}</td>
+						<td><a href={{operadora.site}}>{{operadora.site}}</a></td>
+						<td>
+							<a href="#" ng-click="edit(operadora)">
+		                  		<span class="label">edit</span>
+		                  	</a> |
+		                  	<!-- 
+		                  	<a href="#" ng-click="deleteUser()">
+		                  		<span class="label label-important">remover</span>
+		                  	</a> |
+		                  	 -->
+		                 	<a href="#" ng-click="infoOperadora(operadora)">
+		                  		<span class="label">Informações</span>
+		                  	</a>
+						</td>
+					</tr>
+				</tbody>		
+			</table>
+		</div>
+		
+		<div  class="panel panel-default" id="visualizarInfoGeralOperadora">
+			
+			<div class="panel-heading">
+			    <div class="btn-group pull-right">
+			        <a href="#" class="btn btn-default btn-sm" ng-click="fecharPainelDetalhes()">## Voltar</a>
+			    </div>
+			    <h4> Detalhes da operadora: {{operadora.nomeFantasia}}</h4>
+			</div>
+			
+			<br/>
+			
+		   	<div  class="panel panel-default" >
+			   	<div class="panel-heading">
+				    <h4>Registro Geral da Operadora</h4>
+				</div>
+				
+				<table class="table table-striped" id="tblOperadora">
+					<thead>
+						<tr>
+							<th>Operadora</th>
+							<th>Registo ANS</th>
+							<th>Nome Fantasia</th>
+							<th>Site</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr >
+							<td>{{operadora.razaoSocial}}</td>
+							<td>{{operadora.registroANS}}</td>
+							<td>{{operadora.nomeFantasia}}</td>
+							<td><a href={{operadora.site}}>{{operadora.site}}</a></td>
+						</tr>
+					</tbody>		
+				</table>
+				
+			</div>
 
-		<table class="table table-striped" id="tblOperadoras">
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Operadora</th>
-					<th>Registo ANS</th>
-					<th>Nome Fantasia</th>
-					<th>Site</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="operadora in operadoras">
-					<td>{{operadora.id}}</td>
-					<td>{{operadora.razaoSocial}}</td>
-					<td>{{operadora.registroANS}}</td>
-					<td>{{operadora.nomeFantasia}}</td>
-					<td><a href="{{operadora.site}}">{{operadora.site}}</a></td>
-					<td>
-						<a href="#" ng-click="edit(operadora)">
-	                  		<span class="label">edit</span>
-	                  	</a> |
-	                  	<a href="#" ng-click="deleteUser(user)">
-	                  		<span class="label label-important">remover</span>
-	                  	</a>
-	                 	
-					</td>
-				</tr>
-			</tbody>		
-		</table>
+			<div  class="panel panel-default" >
+			   	<div class="panel-heading">
+				    <h4>Info Geral da Operadora</h4>
+				</div>
+				
+				<table class="table table-bordered" id="tblOperadorasInfo" >
+					<thead>
+						<tr>
+							<th>Operadora</th>
+							<th>Segementação</th>
+							<th>Competência</th>
+							<th>Total de beneficiários</th>
+							<th>Data de cadastro</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{operadoraInfo.operadora.nomeFantasia}}</td>
+							<td>{{operadoraInfo.segmentacao}}</td>
+							<td>{{operadoraInfo.competencia}}</td>
+							<td>{{operadoraInfo.totalBeneficiarios | number:0}}</td>
+							<td>{{operadoraInfo.dtCadastro  | date:'dd/MM/yyyy' }}</td>
+							<td>{{operadoraInfo.status}}</td>
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+
+			<div  class="panel panel-default" >
+			   	<div class="panel-heading">
+				    <h4>IDSS da Operadora</h4>
+				</div>
+			
+				<table class="table table-bordered" id="tblOperadorasIdssGeral" >
+					<thead>
+						<tr>
+							<th>Ano base</th>
+							<th>Ano Competência</th>
+							<th>Nota Geral</th>
+							<th>Dt. Inclusão</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr  ng-repeat="idss in operadoraIdss">
+							<td>{{idss.anoBase}}</td>
+							<td>{{idss.anoCompetencia}}</td>
+							<td>{{idss.notaGeral * 10 | number:3 }}</td>
+							<td>{{idss.dtInclusao  | date:'dd/MM/yyyy' }}</td>
+							<td>
+			                 	<a href="#" ng-click="respostaIdss(idss)">
+			                  		<span class="label">Detalhes</span>
+			                  	</a>
+							</td>
+						</tr>
+					</tbody>		
+				</table>				
+			</div>
+			
+			<div  class="panel panel-default" id="tblOperadorasIdssResposta" >
+			   	<div class="panel-heading">
+				    <h4>Respostas IDSS da Operadora</h4>
+				</div>			
+				<div class="btn-group pull-right">
+			        <a href="#" class="btn btn-default btn-sm" ng-click="fecharPainelRespostas()">## Fechar</a>
+			    </div>
+				<table class="table table-bordered" >
+					<thead>
+						<tr>							
+							<th>Questão</th>
+							<th>Nota</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr  ng-repeat="resposta in respostaIdssLista">
+							<td > <div ng-show="resposta.questaoIdss.questaoPai == null" > {{resposta.questaoIdss.ordem}} - {{resposta.questaoIdss.questao}}</div>
+									<div style="padding-left: 5%" ng-show="resposta.questaoIdss.questaoPai != null" > {{resposta.questaoIdss.questaoPai.ordem}}.{{resposta.questaoIdss.ordem}} - {{resposta.questaoIdss.questao}}</div></td>
+							<td>{{resposta.notaIdss * 10 | number:3}}</td>
+							<tr> <td>{{resposta.questaoIdss.descricao}}</td> </tr>
+						</tr>
+					</tbody>		
+				</table>			
+			</div>
+		</div>		
 		
 		<form class="form" >
 		
@@ -134,7 +259,6 @@
 						
 					</tbody>
 				</table>
-			
 		
 				<input type="hidden" value="" ng-model="operadora.id">
 	

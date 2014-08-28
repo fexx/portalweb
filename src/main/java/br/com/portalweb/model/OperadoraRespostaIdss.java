@@ -5,11 +5,15 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import br.com.portalweb.dao.generic.BaseEntity;
@@ -29,10 +33,13 @@ public class OperadoraRespostaIdss implements BaseEntity<Long>, Serializable {
 	@Column(name = "ID")
 	private Long id;
 	
-	@Column(name = "ID_OPERADORA_IDSS")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ID_OPER_IDSS")
+	@JsonBackReference
 	private CadOperadoraIdss operadoraIdss;
 	
-	@Column(name = "ID_QUESTAO")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_QUESTAO")
 	private QuestoesIdss questaoIdss;
 	
 	@Column(name = "NOTA")

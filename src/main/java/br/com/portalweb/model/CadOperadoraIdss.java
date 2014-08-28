@@ -6,9 +6,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -30,7 +33,8 @@ public class CadOperadoraIdss implements BaseEntity<Long>, Serializable {
 	@Column(name = "ID")
 	private Long id;
 	
-	@Column(name = "ID_OPERADORA")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_OPERADORA")
 	private CadOperadora operadora;
 	
 	@Column(name = "DT_INCLUSAO")

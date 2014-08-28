@@ -32,7 +32,7 @@ public class CadOperadoraInfo implements BaseEntity<Long>, Serializable {
 	@Column(name = "ID")
 	private Long id;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_OPERADORA")
 	private CadOperadora operadora;
 	

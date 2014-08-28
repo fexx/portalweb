@@ -58,6 +58,19 @@ Bootstrap Admin Template by EGrappler.com
 	display: none;
 }
 
+#tblOperadorasInfo{
+	display: none;
+}
+
+#visualizarInfoGeralOperadora {
+	display: none;
+}
+
+#tblOperadorasIdssResposta{
+	display: none;
+	
+}
+
 /*------------------------------------------------------------------
 [2. Stats / .stats]
 */
