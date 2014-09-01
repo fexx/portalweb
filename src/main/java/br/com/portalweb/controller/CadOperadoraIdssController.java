@@ -14,6 +14,7 @@ import br.com.portalweb.dao.impl.CadOperadoraIdssDAO;
 import br.com.portalweb.exception.DAOException;
 import br.com.portalweb.model.CadOperadora;
 import br.com.portalweb.model.CadOperadoraIdss;
+import br.com.portalweb.model.CadOperadoraInfo;
 
 @Controller
 @RequestMapping("/cadOperadoraIdss")
@@ -31,5 +32,10 @@ public class CadOperadoraIdssController {
 		
 	}	
 
+	@Transactional
+	@RequestMapping(value = "/editarCadOperadoraIdss", method = RequestMethod.PUT, headers = {"content-type=application/json"})
+	public @ResponseBody void editarCadOperadora(@RequestBody CadOperadoraIdss operadoraIdss) throws DAOException {
+		cadOperadoraIdssDAO.update(operadoraIdss);
+	}
 	
 }

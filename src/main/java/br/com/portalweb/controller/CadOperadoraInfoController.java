@@ -28,4 +28,10 @@ public class CadOperadoraInfoController  {
 		
 	}	
 
+	@Transactional
+	@RequestMapping(value = "/editarCadOperadoraInfo", method = RequestMethod.PUT, headers = {"content-type=application/json"})
+	public @ResponseBody void editarCadOperadora(@RequestBody CadOperadoraInfo operadoraInfo) throws DAOException {
+		cadOperadoraInfoDAO.update(operadoraInfo);
+	}
+	
 }

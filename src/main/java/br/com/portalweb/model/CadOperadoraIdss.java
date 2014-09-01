@@ -49,6 +49,9 @@ public class CadOperadoraIdss implements BaseEntity<Long>, Serializable {
 	@Column(name = "NOTA_GERAL")
 	private BigDecimal notaGeral;
 
+	@Column(name = "STATUS")
+	private String status;
+	
 	public Long getId() {
 		return id;
 	}

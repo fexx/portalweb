@@ -41,5 +41,20 @@ public class JPACadOperadoraIdss extends JPADAO<CadOperadoraIdss, Long> implemen
 		lista = jpql.getResultList();
 		return lista;
 	}
+
+	public CadOperadoraIdss idssOperadoraAtivo(CadOperadora cadOperadora) throws DAOException {
+		
+		CadOperadoraIdss cadOperadoraIdss = new CadOperadoraIdss();
+		
+		TypedQuery<CadOperadoraIdss> jpql = this.manager.createQuery(" from " + CadOperadoraIdss.class.getSimpleName()
+				+ " where operadora = :cadOperadoraVal and status = :statusVal " , CadOperadoraIdss.class
+			);
+		jpql.setParameter("cadOperadoraIdssVal", cadOperadora);
+		jpql.setParameter("statusVal", "ATIVO");
+		
+		cadOperadoraIdss = (CadOperadoraIdss)jpql.getSingleResult();
+		
+		return cadOperadoraIdss;
+	}
 	
 }

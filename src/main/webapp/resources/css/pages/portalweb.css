@@ -8,6 +8,10 @@ Bootstrap Admin Template by EGrappler.com
 [1. Shortcuts / .shortcuts]
 */
 
+#cadOperadorasAddEditInfo{
+	display:none;	
+}
+
 .shortcuts {
 	text-align: center;
 	margin-top: 10px;
@@ -54,7 +58,7 @@ Bootstrap Admin Template by EGrappler.com
 	color: #545454;
 }
 
-#tblAddEdit{
+#addEditCadOperadora{
 	display: none;
 }
 

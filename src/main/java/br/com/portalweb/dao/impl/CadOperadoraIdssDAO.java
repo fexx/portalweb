@@ -11,4 +11,6 @@ public interface CadOperadoraIdssDAO extends DAOBase<CadOperadoraIdss, Long>{
 
 	public List<CadOperadoraIdss> listaIdssOperadora(CadOperadora cadOperadora) throws DAOException;
 	
+	public CadOperadoraIdss idssOperadoraAtivo(CadOperadora cadOperadora) throws DAOException;
+	
 }

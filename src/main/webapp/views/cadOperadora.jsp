@@ -1,6 +1,8 @@
 <%@page contentType="text/html; charset=ISO-8859-1" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="ds" tagdir="/WEB-INF/tags"%>
+<%@ taglib prefix="op" tagdir="/WEB-INF/tags" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,9 +24,19 @@
 
 <body ng-app ng-controller="cadOperadoraController">
 	
-	<div class=container>
+	<div class=container id="cadOperadorasAddEditInfo" >
+
+		<!-- LISTA OPERADORAS CADASTRADAS -->
+	
 		<div id="listaOperadoras" >
-			<table class="table table-striped" id="tblOperadoras">
+		
+			<div class="panel-heading"  >
+			    <div class="btn-group pull-right">
+			        <a href="#" class="btn btn-default btn-sm" ng-click="">Cadastrar Nova Operadora</a>			         			      
+			    </div>
+			</div>		
+			
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						<th>Operadora</th>
@@ -39,71 +51,125 @@
 						<td>{{operadora.razaoSocial}}</td>
 						<td>{{operadora.registroANS}}</td>
 						<td>{{operadora.nomeFantasia}}</td>
-						<td><a href={{operadora.site}}>{{operadora.site}}</a></td>
+						<td class="operadoraWebSite" ><a ng-href="{{operadora.site}}" ng-click="openUrl(operadora)" >{{operadora.site}}</a></td>
 						<td>
-							<a href="#" ng-click="edit(operadora)">
-		                  		<span class="label">edit</span>
-		                  	</a> |
-		                  	<!-- 
-		                  	<a href="#" ng-click="deleteUser()">
-		                  		<span class="label label-important">remover</span>
-		                  	</a> |
-		                  	 -->
-		                 	<a href="#" ng-click="infoOperadora(operadora)">
-		                  		<span class="label">Informações</span>
+							<a href="#" ng-click="infoOperadora(operadora)">
+		                  		<span class="label">Mais Informações</span>
 		                  	</a>
 						</td>
 					</tr>
 				</tbody>		
-			</table>
+			</table>				
+		
 		</div>
 		
-		<div  class="panel panel-default" id="visualizarInfoGeralOperadora">
-			
-			<div class="panel-heading">
+		<!-- VISUALIZACAO DE CADASTRO SELECIONADO -->
+		
+		<div  id="visualizarInfoGeralOperadora">
+		
+			<div class="panel-heading"  >
 			    <div class="btn-group pull-right">
-			        <a href="#" class="btn btn-default btn-sm" ng-click="fecharPainelDetalhes()">## Voltar</a>
+			        <a href="#" class="btn btn-default btn-sm" ng-click="fecharInfoOperadora()">Voltar</a> 			       
 			    </div>
 			    <h4> Detalhes da operadora: {{operadora.nomeFantasia}}</h4>
 			</div>
-			
+		
 			<br/>
-			
-		   	<div  class="panel panel-default" >
-			   	<div class="panel-heading">
-				    <h4>Registro Geral da Operadora</h4>
-				</div>
-				
-				<table class="table table-striped" id="tblOperadora">
-					<thead>
-						<tr>
-							<th>Operadora</th>
-							<th>Registo ANS</th>
-							<th>Nome Fantasia</th>
-							<th>Site</th>
-						</tr>
-					</thead>
+		
+			<div class="panel panel-default" >			
+				<div class="panel-heading"  >
+				    <div class="btn-group pull-right">
+				        <a href="#" class="btn btn-default btn-sm" ng-click="habilitaEditarCadOperadora()" id="btnEditarOperadora" >Editar Operadora</a>			         			      
+				    </div>
+				    <h4>Cadastrado da Operadora</h4>
+				</div>					    
+			    
+			    <!-- CADASTRO OPERADORA -->
+			    
+			    <table class="table table-bordered">
 					<tbody>
-						<tr >
-							<td>{{operadora.razaoSocial}}</td>
-							<td>{{operadora.registroANS}}</td>
-							<td>{{operadora.nomeFantasia}}</td>
-							<td><a href={{operadora.site}}>{{operadora.site}}</a></td>
+						<tr>
+							<td>Razão Social</td>
+							<td class="razaoSocial" >{{operadora.razaoSocial}}</td>
+							
+							<td>Registro ANS</td>
+							<td class="registroAns" >{{operadora.registroANS}}</td>
+							
 						</tr>
-					</tbody>		
-				</table>
-				
-			</div>
+						
+						<tr>
+							<td>Nome Fantasia</td>
+							<td class="nomeFantasia" >{{operadora.nomeFantasia}}</td>
+						
+							<td>CNPJ</td>
+							<td class="cnpj" >{{operadora.cnpj}}</td>
+						</tr>						
 
-			<div  class="panel panel-default" >
+						<tr>						
+							<td>CEP</td>
+							<td class="cep" >{{operadora.cep}}</td>
+
+							<td>Logradouro</td>
+							<td class="logradouro" >{{operadora.logradouro}}</td>
+						</tr>	
+
+						<tr>
+							<td>Número</td>
+							<td class="numeroLogradouro" >{{operadora.numeroLogradouro}}</td>
+							
+							<td>Complemento</td>
+							<td class="complemento" >{{operadora.complemento}}</td>
+						</tr>							
+
+						<tr>
+							<td>Bairro</td>
+							<td class="bairro" >{{operadora.bairro}}</td>
+
+							<td>Cidade</td>
+							<td class="cidade" >{{operadora.cidade}}</td>
+						</tr>	
+
+						<tr>
+							<td>Estado (UF)</td>
+							<td class="uf" >{{operadora.uf}}</td>
+
+						</tr>							
+						
+						<tr>
+							<td>Tel DDD</td>
+							<td class="telDDD" >{{operadora.telDDD}}</td>
+
+							<td>Telefone</td>
+							<td class="telefone" >{{operadora.telefone}}</td>
+
+							<td>Fax</td>
+							<td class="fax" >{{operadora.fax}}</td>
+						</tr>							
+						
+						<tr>
+							<td>E-mail do responsável</td>
+							<td class="emailResponsavel" >{{operadora.emailResponsavel}}</td>
+
+							<td>Site</td>
+							<td class="site" ><a href="{{operadora.site}}" >{{operadora.site}}</a></td>
+						</tr>	
+						
+					</tbody>
+				</table>
+							
+			</div>
+			
+			<div  class="panel panel-default">
 			   	<div class="panel-heading">
+				    <div class="btn-group pull-right">
+				        <a href="#" class="btn btn-default btn-sm" ng-click="habilitaEditarCadOperadoraInfoGeral()">Editar Info Geral</a> 			       
+				    </div>
 				    <h4>Info Geral da Operadora</h4>
 				</div>
 				
-				<table class="table table-bordered" id="tblOperadorasInfo" >
+				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>Operadora</th>
 							<th>Segementação</th>
 							<th>Competência</th>
 							<th>Total de beneficiários</th>
@@ -113,7 +179,6 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>{{operadoraInfo.operadora.nomeFantasia}}</td>
 							<td>{{operadoraInfo.segmentacao}}</td>
 							<td>{{operadoraInfo.competencia}}</td>
 							<td>{{operadoraInfo.totalBeneficiarios | number:0}}</td>
@@ -122,14 +187,15 @@
 						</tr>
 					</tbody>		
 				</table>
-			</div>
-
+				
+			</div>			
+		
 			<div  class="panel panel-default" >
 			   	<div class="panel-heading">
 				    <h4>IDSS da Operadora</h4>
 				</div>
 			
-				<table class="table table-bordered" id="tblOperadorasIdssGeral" >
+				<table class="table table-bordered">
 					<thead>
 						<tr>
 							<th>Ano base</th>
@@ -148,20 +214,24 @@
 							<td>
 			                 	<a href="#" ng-click="respostaIdss(idss)">
 			                  		<span class="label">Detalhes</span>
+			                  	</a> |
+			                  	<a href="#" ng-click="habilitaEditarCadOperadoraIdss(idss)">
+			                  		<span class="label">Editar</span>
 			                  	</a>
 							</td>
 						</tr>
 					</tbody>		
 				</table>				
-			</div>
-			
+			</div>		
+		
 			<div  class="panel panel-default" id="tblOperadorasIdssResposta" >
 			   	<div class="panel-heading">
+					<div class="btn-group pull-right">
+				        <a href="#" class="btn btn-default btn-sm" ng-click="fecharPainelRespostas()">Fechar Painel</a>
+				    </div>
 				    <h4>Respostas IDSS da Operadora</h4>
 				</div>			
-				<div class="btn-group pull-right">
-			        <a href="#" class="btn btn-default btn-sm" ng-click="fecharPainelRespostas()">## Fechar</a>
-			    </div>
+
 				<table class="table table-bordered" >
 					<thead>
 						<tr>							
@@ -172,112 +242,199 @@
 					<tbody>
 						<tr  ng-repeat="resposta in respostaIdssLista">
 							<td > <div ng-show="resposta.questaoIdss.questaoPai == null" > {{resposta.questaoIdss.ordem}} - {{resposta.questaoIdss.questao}}</div>
-									<div style="padding-left: 5%" ng-show="resposta.questaoIdss.questaoPai != null" > {{resposta.questaoIdss.questaoPai.ordem}}.{{resposta.questaoIdss.ordem}} - {{resposta.questaoIdss.questao}}</div></td>
-							<td>{{resposta.notaIdss * 10 | number:3}}</td>
-							<tr> <td>{{resposta.questaoIdss.descricao}}</td> </tr>
+									<div style="padding-left: 5%" ng-show="resposta.questaoIdss.questaoPai != null" > {{resposta.questaoIdss.questaoPai.ordem}}.{{resposta.questaoIdss.ordem}} - {{resposta.questaoIdss.questao}}</div>
+							</td>
+							
+							<!--  <td>{{resposta.notaIdss * 10 | number:3}}</td>-->
+							
+							<td> <input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" /></td>							
+							 
 						</tr>
 					</tbody>		
 				</table>			
-			</div>
-		</div>		
+			</div>			
 		
-		<form class="form" >
-		
-			<div class="table-responsive" id="tblAddEdit" style="display:none" >
-				<table class="table ">
-					<thead>
-						<tr>
-							<th style="colspan:2" >{{operadora.nomeFantasia}}</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Razão Social</td>
-							<td><input type="text" ng-model="operadora.razaoSocial" class="input-large" maxlength="512" ></td>
-							
-							<td>Registro ANS</td>
-							<td><input type="text" ng-model="operadora.registroANS" class="form-control" maxlength="16" ></td>
-							
-						</tr>
-						
-						<tr>
-							<td>Nome Fantasia</td>
-							<td><input type="text" ng-model="operadora.nomeFantasia" class="form-control" maxlength="512" ></td>
-						
-							<td>CNPJ</td>
-							<td><input type="text" ng-model="operadora.cnpj" class="form-control" maxlength="18" ></td>
-						</tr>						
-
-						<tr>
-							<td>Logradouro</td>
-							<td><input type="text" ng-model="operadora.logradouro" class="form-control" maxlength="1024"></td>
-						</tr>	
-
-						<tr>
-							<td>Número</td>
-							<td><input type="text" ng-model="operadora.numeroLogradouro" class="form-control" maxlength="32" ></td>
-							
-							<td>Complemento</td>
-							<td><input type="text" ng-model="operadora.complemento" class="form-control" maxlength="32" ></td>
-						</tr>							
-
-						<tr>
-							<td>Bairro</td>
-							<td><input type="text" ng-model="operadora.bairro" class="form-control" maxlength="64" ></td>
-
-							<td>Cidade</td>
-							<td><input type="text" ng-model="operadora.cidade" class="form-control" maxlength="64" ></td>
-						</tr>	
-
-						<tr>
-							<td>Estado (UF)</td>
-							<td><input type="text" ng-model="operadora.uf" class="form-control" maxlength="2" ></td>
-
-							<td>CEP</td>
-							<td><input type="text" ng-model="operadora.cep" class="form-control" maxlength="9" ></td>
-						</tr>							
-						
-						<tr>
-							<td>Tel DDD</td>
-							<td><input type="text" ng-model="operadora.telDDD" class="form-control" maxlength="2" ></td>
-
-							<td>Telefone</td>
-							<td><input type="text" ng-model="operadora.telefone" class="form-control" maxlength="256" ></td>
-
-							<td>Fax</td>
-							<td><input type="text" ng-model="operadora.fax" class="form-control"  maxlength="256" ></td>
-						</tr>							
-						
-						<tr>
-							<td>E-mail do responsável</td>
-							<td><input type="text" ng-model="operadora.emailResponsavel" class="form-control" maxlength="512" ></td>
-
-							<td>Site</td>
-							<td><input type="text" ng-model="operadora.site" class="form-control" maxlength="512" ></td>
-						</tr>	
-						
-					</tbody>
-				</table>
-		
-				<input type="hidden" value="" ng-model="operadora.id">
+		</div>
 	
-				<button ng-click="postUser()" class="btn btn-success dropdown-toggle">Send user</button>
-				<button ng-click="putUser()" class="btn btn-primary dropdown-toggle" disabled="disabled">Edit user</button>
-			</div>
-		</form>
+		<div id="addEditCadOperadora">
+			<div class="panel-heading">
+			    <h4>Alteração de dados da operadora: {{operadora.nomeFantasia}}</h4>
+			</div>					
+			<form class="form" >
+			
+				<div class="table-responsive" id="tblAddEditCadOperadoraInfoGeral" >
+				
+				    <table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td>Razão Social</td>
+								<td class="razaoSocial" ><input type="text" ng-model="operadoraEdit.razaoSocial" class="form-control" maxlength="512" /></td>
+								
+								<td>Registro ANS</td>
+								<td class="registroAns" ><input type="text" ng-model="operadoraEdit.registroANS" class="form-control" maxlength="16" /></td>
+								
+							</tr>
+							
+							<tr>
+								<td>Nome Fantasia</td>
+								<td class="nomeFantasia" ><input type="text" ng-model="operadoraEdit.nomeFantasia" class="form-control" maxlength="512" /></td>
+							
+								<td>CNPJ</td>
+								<td class="cnpj" ><input type="text" ng-model="operadoraEdit.cnpj" class="form-control" maxlength="18" /></td>
+							</tr>						
+	
+							<tr>						
+								<td>CEP</td>
+								<td class="cep" ><input type="text" ng-model="operadoraEdit.cep" class="form-control" maxlength="9" /></td>
+	
+								<td>Logradouro</td>
+								<td class="logradouro" ><input type="text" ng-model="operadoraEdit.logradouro" class="form-control" maxlength="1024" /></td>
+							</tr>	
+	
+							<tr>
+								<td>Número</td>
+								<td class="numeroLogradouro" ><input type="text" ng-model="operadoraEdit.numeroLogradouro" class="form-control" maxlength="32" /></td>
+								
+								<td>Complemento</td>
+								<td class="complemento" ><input type="text" ng-model="operadoraEdit.complemento" class="form-control" maxlength="32" /></td>
+							</tr>							
+	
+							<tr>
+								<td>Bairro</td>
+								<td class="bairro" ><input type="text" ng-model="operadoraEdit.bairro" class="form-control" maxlength="64" /></td>
+	
+								<td>Cidade</td>
+								<td class="cidade" ><input type="text" ng-model="operadoraEdit.cidade" class="form-control"  maxlength="64" /></td>
+							</tr>	
+	
+							<tr>
+								<td>Estado (UF)</td>
+								<td class="uf" ><op:combo-uf name="addEditUf" classes="form-control" id="addEditUf"/></td>
+	
+							</tr>							
+							
+							<tr>
+								<td>Tel DDD</td>
+								<td class="telDDD" ><input type="text" ng-model="operadoraEdit.telDDD" class="form-control"  maxlength="2" /></td>
+	
+								<td>Telefone</td>
+								<td class="telefone" ><input type="text" ng-model="operadoraEdit.telefone" class="form-control"  maxlength="256" /></td>
+	
+								<td>Fax</td>
+								<td class="fax" ><input type="text" ng-model="operadoraEdit.fax" class="form-control"  maxlength="256" /></td>
+							</tr>							
+							
+							<tr>
+								<td>E-mail do responsável</td>
+								<td class="emailResponsavel" ><input type="email" ng-model="operadoraEdit.emailResponsavel" class="form-control"  maxlength="512" /></td>
+	
+								<td>Site</td>
+								<td class="site" ><input type="text" ng-model="operadoraEdit.site" class="form-control"  maxlength="512" /></td>
+							</tr>	
+							
+						</tbody>
+					</table>
+			
+					<input type="hidden" value="" ng-model="operadoraEdit.id">
 		
+					<button ng-click="editarCadastroOperadora()" class="btn btn-success">Salvar</button>
+					<button ng-click="cancelEditCadastroOperadora()" class="btn btn-cancel">Cancelar</button>
+				</div>
+			</form>						
+
+		</div>	
+
+		<div id="addEditCadOperadoraInfo">
+			<div class="panel-heading">
+			    <h4>Alteração de informações gerais da operadora: {{operadora.nomeFantasia}}</h4>
+			</div>					
+			<form class="form" >
+			
+				<div class="table-responsive">
+				
+				    <table class="table table-bordered">
+						<tbody>
+						
+							<tr>
+								<td>Segmentação</td>
+								<td class="segmentacaoOperadoraInfo" ><input type="text" ng-model="operadoraInfoEdit.segmentacao" class="form-control" maxlength="512" /></td>
+							</tr>						
+							
+							<tr>
+								<td>Total de beneficiários</td>
+								<td class="ttBenefOperadoraInfo" ><input type="number" ng-model="operadoraInfoEdit.totalBeneficiarios" class="form-control" maxlength="512" /></td>
+							</tr>
+							
+							<tr>
+								<td>Competência</td>
+								<td class="competenciaOperadoraInfo" ><input type="text" ng-model="operadoraInfoEdit.competencia" class="form-control" maxlength="512" /></td>
+							</tr>
+
+							<tr>
+								<td>Status ANS</td>
+								<td class="statusAnsOperadoraInfo" ><input type="text" ng-model="operadoraInfoEdit.statusANS" class="form-control" maxlength="512" /></td>
+							</tr>								
+							
+						</tbody>
+					</table>
+			
+					<input type="hidden" value="" ng-model="operadoraInfoEdit.id">
+		
+					<button ng-click="editarCadastroOperadoraInfo()" class="btn btn-success">Salvar</button>
+					<button ng-click="cancelEditCadastroOperadoraInfo()" class="btn btn-cancel">Cancelar</button>
+				</div>
+			</form>						
+
+		</div>	
+
+		<div id="addEditCadOperadoraIdss">
+			<div class="panel-heading">
+			    <h4>Alteração de IDSS da operadora: {{operadora.nomeFantasia}}</h4>
+			</div>					
+			<form class="form" >
+			
+				<div class="table-responsive">
+				
+				    <table class="table table-bordered">
+						<tbody>
+						
+							<tr>
+								<td>Ano Base</td>
+								<td class="anoBaseOperadoraIdss" ><input type="number" step="any" ng-model="operadoraIdssEdit.anoBase" class="form-control" maxlength="512" /></td>
+							</tr>						
+							
+							<tr>
+								<td>Ano Competência</td>
+								<td class="anoCompetenciaOperadoraIdss" ><input type="number" step="any" ng-model="operadoraIdssEdit.anoCompetencia" class="form-control" maxlength="512" /></td>
+							</tr>													
+							
+							<tr>
+								<td>Nota Geral</td>
+								<td class="anoBaseOperadoraIdss" ><input type="number" step="any" ng-model="operadoraIdssEdit.notaGeral" class="form-control" maxlength="512" /></td>
+							</tr>													
+							
+						</tbody>
+					</table>
+			
+					<input type="hidden" value="" ng-model="operadoraIdssEdit.id">
+		
+					<button ng-click="editarCadastroOperadoraIdss()" class="btn btn-success">Salvar</button>
+					<button ng-click="cancelEditCadastroOperadoraIdss()" class="btn btn-cancel">Cancelar</button>
+				</div>
+			</form>						
+
+		</div>	
+	
 	</div>
+
 </body>
 
 <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.2.6.min.js"></script>
-
 <script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/angular/angular.min.js'/>"></script>
-<script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/angular/cadOperadoraController.js'/>"></script>
-
 <script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/excanvas.min.js'/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/chart.min.js'/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/bootstrap.js'/>"></script>
 <script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/grafico/grafico.js'/>"></script>
+<script type="text/javascript" charset="utf-8" src="<c:url value='/resources/js/angular/cadOperadoraController.js'/>"></script>
 
 </html>

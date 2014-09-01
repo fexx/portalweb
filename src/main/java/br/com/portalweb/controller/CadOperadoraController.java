@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.portalweb.dao.impl.CadOperadoraDAO;
+import br.com.portalweb.dao.impl.CadOperadoraIdssDAO;
 import br.com.portalweb.exception.DAOException;
 import br.com.portalweb.model.CadOperadora;
 
@@ -21,9 +22,13 @@ public class CadOperadoraController {
 	@Autowired
 	private CadOperadoraDAO cadOperadoraDAO;
 	
+	@Autowired
+	private CadOperadoraIdssDAO cadOperadoraIdssDAO;
+	
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
 	public @ResponseBody List<CadOperadora> listarOperadora() throws DAOException {
 		List<CadOperadora> listaCadOperadora = cadOperadoraDAO.list();
+		
 		return listaCadOperadora;
 		
 	}
