@@ -30,20 +30,4 @@ public class OperadoraIdssRespostaController {
 		
 	}	
 	
-
-	@Transactional
-	@RequestMapping(value = "/editarCadOperadoraIdssRespostas", method = RequestMethod.PUT, headers = {"content-type=application/json"})
-	public @ResponseBody void editarCadOperadoraIdssResposta(@RequestBody List<OperadoraRespostaIdss> operadoraIdssRespostas) throws DAOException {
-		//cadOperadoraIdssDAO.update(operadoraIdss);
-		
-		if (!operadoraIdssRespostas.isEmpty()){
-			
-			for (OperadoraRespostaIdss resposta : operadoraIdssRespostas){
-				operadoraIdssRespostaDAO.update(resposta);
-			}
-			
-		}
-		
-	}
-	
 }

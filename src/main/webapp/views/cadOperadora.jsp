@@ -221,7 +221,7 @@
 							</td>
 						</tr>
 					</tbody>		
-				</table>								
+				</table>				
 			</div>		
 		
 			<div  class="panel panel-default" id="tblOperadorasIdssResposta" >
@@ -247,14 +247,11 @@
 							
 							<!--  <td>{{resposta.notaIdss * 10 | number:3}}</td>-->
 							
-							<td> <input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" /></td>																					
+							<td> <input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" /></td>							
 							 
 						</tr>
 					</tbody>		
 				</table>			
-				
-				<button ng-click="editarCadastroOperadoraRespostas()" class="btn btn-success">Salvar</button>
-				
 			</div>			
 		
 		</div>
@@ -382,8 +379,6 @@
 					</table>
 			
 					<input type="hidden" value="" ng-model="operadoraInfoEdit.id">
-					<input type="hidden" value="" ng-model="operadoraInfoEdit.status">
-					<input type="hidden" value="" ng-model="operadoraInfoEdit.dtCadastro">
 		
 					<button ng-click="editarCadastroOperadoraInfo()" class="btn btn-success">Salvar</button>
 					<button ng-click="cancelEditCadastroOperadoraInfo()" class="btn btn-cancel">Cancelar</button>
@@ -421,10 +416,7 @@
 						</tbody>
 					</table>
 			
-					<input type="hidden" ng-model="operadoraIdssEdit.id">
-					<input type="hidden" ng-model="operadoraIdssEdit.status">
-					<input type="hidden" ng-model="operadoraIdssEdit.dtInclusao">
-					<input type="hidden" ng-model="operadoraIdssEdit.status">
+					<input type="hidden" value="" ng-model="operadoraIdssEdit.id">
 		
 					<button ng-click="editarCadastroOperadoraIdss()" class="btn btn-success">Salvar</button>
 					<button ng-click="cancelEditCadastroOperadoraIdss()" class="btn btn-cancel">Cancelar</button>
