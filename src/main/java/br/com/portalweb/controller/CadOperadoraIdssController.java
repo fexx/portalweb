@@ -26,8 +26,8 @@ public class CadOperadoraIdssController {
 	@Transactional
 	@RequestMapping(value = "/operadoraIdss", method = RequestMethod.POST , headers = {"content-type=application/json"})
 	public @ResponseBody List<CadOperadoraIdss> operadoraIdss(@RequestBody CadOperadora operadoraVal) throws DAOException {
-		List<CadOperadoraIdss> operadoraIdssLista = cadOperadoraIdssDAO.listaIdssOperadora(operadoraVal);
-		return operadoraIdssLista;
+		List<CadOperadoraIdss> operadoraIdssListaTeste = cadOperadoraIdssDAO.listaIdssOperadora(operadoraVal);
+		return operadoraIdssListaTeste;
 		
 	}	
 

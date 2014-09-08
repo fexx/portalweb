@@ -7,7 +7,6 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>java:/datasource/portalweb</jta-data-source>
         
-        <class>br.com.portalweb.model.CrmPessoa</class>
         <class>br.com.portalweb.model.CadOperadora</class>
         <class>br.com.portalweb.model.CadOperadoraIdss</class>
         <class>br.com.portalweb.model.CadOperadoraInfo</class>
