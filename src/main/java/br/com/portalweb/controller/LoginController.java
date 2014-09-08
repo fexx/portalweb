@@ -1,7 +1,6 @@
 package br.com.portalweb.controller;
 
 import javax.persistence.NoResultException;
-import javax.ws.rs.Path;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
@@ -24,7 +23,7 @@ public class LoginController {
 	private SHA sha;
 	
 	
-	@Path("/login/usuario")
+	@RequestMapping("/login/usuario")
 	public void usuario(Usuario usuario) throws NoResultException, IllegalArgumentException, AuthenticationException, DAOException{
 		Usuario usuarioBD = usuarioDAO.buscaPorEmail(usuario.getEmail());
 		
