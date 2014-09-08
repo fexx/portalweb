@@ -1,4 +1,4 @@
-package br.com.portalweb.dao.generic;
+package br.com.portalweb.dao.jpa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.portalweb.dao.impl.OperadoraRespostaIdssDAO;
+import br.com.portalweb.dao.OperadoraRespostaIdssDAO;
 import br.com.portalweb.model.CadOperadoraIdss;
 import br.com.portalweb.model.OperadoraRespostaIdss;
 

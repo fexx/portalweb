@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import org.codehaus.jackson.annotate.JsonBackReference;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import br.com.portalweb.dao.generic.BaseEntity;
+import br.com.portalweb.dao.BaseEntity;
 
 @Entity
 @Table(name = "CAD_OPER_IDSS_RESPOSTA")

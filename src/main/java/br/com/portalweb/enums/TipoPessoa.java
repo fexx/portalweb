@@ -1,4 +1,4 @@
-package br.com.portalweb.enumeration;
+package br.com.portalweb.enums;
 
 public enum TipoPessoa {
 	
