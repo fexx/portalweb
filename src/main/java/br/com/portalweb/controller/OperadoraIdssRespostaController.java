@@ -1,6 +1,5 @@
 package br.com.portalweb.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.portalweb.dao.impl.OperadoraRespostaIdssDAO;
+import br.com.portalweb.dao.OperadoraRespostaIdssDAO;
 import br.com.portalweb.exception.DAOException;
 import br.com.portalweb.model.CadOperadoraIdss;
 import br.com.portalweb.model.OperadoraRespostaIdss;

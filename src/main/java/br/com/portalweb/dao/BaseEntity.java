@@ -1,4 +1,4 @@
-package br.com.portalweb.dao.generic;
+package br.com.portalweb.dao;
 
 import java.io.Serializable;
 

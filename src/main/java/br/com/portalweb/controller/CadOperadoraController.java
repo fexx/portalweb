@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.portalweb.dao.impl.CadOperadoraDAO;
-import br.com.portalweb.dao.impl.CadOperadoraIdssDAO;
+import br.com.portalweb.dao.CadOperadoraDAO;
+import br.com.portalweb.dao.CadOperadoraIdssDAO;
 import br.com.portalweb.exception.DAOException;
 import br.com.portalweb.model.CadOperadora;
 

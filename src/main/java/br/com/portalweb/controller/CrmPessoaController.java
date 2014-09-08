@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.portalweb.dao.impl.CrmPessoaDAO;
+import br.com.portalweb.dao.CrmPessoaDAO;
 import br.com.portalweb.exception.DAOException;
 import br.com.portalweb.model.CrmPessoa;
 

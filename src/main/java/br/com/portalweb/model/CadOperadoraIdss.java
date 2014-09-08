@@ -16,16 +16,13 @@ import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import br.com.portalweb.dao.generic.BaseEntity;
+import br.com.portalweb.dao.BaseEntity;
 
 @Entity
 @Table(name = "CAD_OPERADORA_IDSS")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CadOperadoraIdss implements BaseEntity<Long>, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2607133744243938840L;
 
 	@Id

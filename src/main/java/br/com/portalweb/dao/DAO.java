@@ -1,11 +1,11 @@
-package br.com.portalweb.dao.generic;
+package br.com.portalweb.dao;
 
 import java.util.List;
 
 import br.com.portalweb.exception.DAOException;
 
 
-public interface DAOBase<T, PK> {
+public interface DAO<T, PK> {
 	
 	public List<T> list() throws DAOException;
 	

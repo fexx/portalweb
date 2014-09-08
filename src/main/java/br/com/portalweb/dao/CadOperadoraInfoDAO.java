@@ -1,10 +1,9 @@
-package br.com.portalweb.dao.impl;
+package br.com.portalweb.dao;
 
-import br.com.portalweb.dao.generic.DAOBase;
 import br.com.portalweb.model.CadOperadora;
 import br.com.portalweb.model.CadOperadoraInfo;
 
-public interface CadOperadoraInfoDAO extends DAOBase<CadOperadoraInfo, Long>{
+public interface CadOperadoraInfoDAO extends DAO<CadOperadoraInfo, Long>{
 
 	public CadOperadoraInfo getCadOperadoraInfoAtivo(CadOperadora cadOperadora);
 	

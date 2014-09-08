@@ -1,4 +1,4 @@
-package br.com.portalweb.dao.generic;
+package br.com.portalweb.dao.jpa;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -11,10 +11,12 @@ import javax.persistence.TypedQuery;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.portalweb.dao.BaseEntity;
+import br.com.portalweb.dao.DAO;
 import br.com.portalweb.exception.DAOException;
 
 @Transactional(propagation=Propagation.SUPPORTS)
-public abstract class JPADAO<T extends BaseEntity<PK>, PK extends Serializable> implements DAOBase<T, PK> {
+public abstract class JPADAO<T extends BaseEntity<PK>, PK extends Serializable> implements DAO<T, PK> {
 
 	protected abstract Class<T> getClazz();
 

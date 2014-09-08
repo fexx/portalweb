@@ -12,8 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.com.portalweb.dao.generic.BaseEntity;
-import br.com.portalweb.enumeration.TipoPessoa;
+import br.com.portalweb.dao.BaseEntity;
+import br.com.portalweb.enums.TipoPessoa;
 
 @Entity
 @Table(name = "CRM_PESSOA")
