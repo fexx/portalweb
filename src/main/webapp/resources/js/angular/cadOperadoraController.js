@@ -2,7 +2,7 @@ function cadOperadoraController($scope, $window, $http) {
 	
 	$scope.operadoras = [];
 	$scope.operadorasInfo = [];
-	$scope.operadoraIdss = [];
+	$scope.operadoraIdssLista = [];
 	$scope.respostaIdssLista = [];
 	
 	$scope.operadora;
@@ -58,10 +58,11 @@ function cadOperadoraController($scope, $window, $http) {
 		
 		/*
 		 * POPULAR OBJETO DE IDSS DE CADASTRO DA OPERADORA 
-		 * */				
+		 * */
 		$http.post('/portalweb/cadOperadoraIdss/operadoraIdss', operadoraVal).success(function(data){
-    		$scope.operadoraIdss = data;
+			$scope.operadoraIdss = data;
     	});
+		
 		//TODO: IMPLEMENTAR CASO DE FALHA IMPRIMINDO EM TELA O ERRO OCORRIDO
 		
 	}
@@ -79,7 +80,7 @@ function cadOperadoraController($scope, $window, $http) {
 			
 		/* LIMPA REGISTROS DE DETALHES DA OPERADORA */
 		$scope.operadorasInfo = [];
-		$scope.operadoraIdss = [];
+		$scope.operadoraIdssLista = [];
 		$scope.respostaIdssLista = [];
 		
 		$scope.operadora = "";
@@ -250,6 +251,18 @@ function cadOperadoraController($scope, $window, $http) {
 		
 	}	
 	
+	$scope.editarCadastroOperadoraRespostas = function(){
+		
+		var operadoraIdssRespostas = angular.toJson($scope.respostaIdssLista);
+		$http.put('/portalweb/cadOperadoraIdssResposta/editarCadOperadoraIdssRespostas', operadoraIdssRespostas).success(function(data){
+    		//TODO: IMPLEMENTAR CASO DE FALHA E SUCESSO IMPRIMINDO EM TELA O ERRO OCORRIDO
+			
+			console.log("agora foi heeeem");
+			
+		});
+	}
+	
+	
 	$scope.openUrl = function(operadora){
 		
 		window.open(operadora.site, '_blank');
@@ -260,5 +273,6 @@ function cadOperadoraController($scope, $window, $http) {
 	 * LIBERA VISUALIZAÇÃO DE TELA DEPOIS DE TER CARREGADO TODOS OS COMPONENTES
 	 * */
 	$("#cadOperadorasAddEditInfo").show();
+
 	
 }

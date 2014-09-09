@@ -1,5 +1,6 @@
 package br.com.portalweb.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,23 @@ public class OperadoraIdssRespostaController {
 		return operadoraIdssLista;
 		
 	}	
+	
+
+	@Transactional
+	@RequestMapping(value = "/editarCadOperadoraIdssRespostas", method = RequestMethod.PUT, headers = {"content-type=application/json"})
+	public @ResponseBody void editarCadOperadoraIdssResposta(@RequestBody OperadoraRespostaIdss[] operadoraIdssRespostas) throws DAOException {
+		//cadOperadoraIdssDAO.update(operadoraIdss);
+		
+		List<OperadoraRespostaIdss> lista = Arrays.asList(operadoraIdssRespostas);
+		
+		if (!lista.isEmpty()){
+			
+			for (OperadoraRespostaIdss resposta : lista){
+				operadoraIdssRespostaDAO.update(resposta);
+			}
+			
+		}
+		
+	}
 	
 }
