@@ -27,6 +27,11 @@ public class OperadoraIdssRespostaController {
 	@RequestMapping(value = "/operadoraIdssResposta", method = RequestMethod.POST , headers = {"content-type=application/json"})
 	public @ResponseBody List<OperadoraRespostaIdss> operadoraIdss(@RequestBody CadOperadoraIdss operadoraIdssVal) throws DAOException {
 		List<OperadoraRespostaIdss> operadoraIdssLista = operadoraIdssRespostaDAO.listaCadOperadoraRespostas(operadoraIdssVal);
+		
+		for(OperadoraRespostaIdss det : operadoraIdssLista){ 
+			det.setOperadoraIdss(operadoraIdssVal);
+		}
+		
 		return operadoraIdssLista;
 		
 	}	
