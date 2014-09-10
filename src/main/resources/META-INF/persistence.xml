@@ -12,7 +12,8 @@
         <class>br.com.portalweb.model.CadOperadoraInfo</class>
         <class>br.com.portalweb.model.OperadoraRespostaIdss</class>
         <class>br.com.portalweb.model.QuestoesIdss</class>
-        <class>br.com.portalweb.model.Usuario</class>
+<!--         <class>br.com.portalweb.model.CrmPessoa</class> -->
+<!--         <class>br.com.portalweb.model.Usuario</class> -->
         
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> 
