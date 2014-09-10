@@ -247,7 +247,9 @@
 							
 							<!--  <td>{{resposta.notaIdss * 10 | number:3}}</td>-->
 							
-							<td> <input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" /></td>																					
+							<td> 
+								<input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" />
+							</td>																					
 							 
 						</tr>
 					</tbody>		

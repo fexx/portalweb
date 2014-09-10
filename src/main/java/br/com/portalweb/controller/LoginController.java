@@ -18,13 +18,9 @@ public class LoginController {
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 	
-//	@Autowired
-//	private SHA sha;
-	
-	
 	@RequestMapping("/login/usuario")
 	public void usuario(Usuario usuario) throws NoResultException, IllegalArgumentException, AuthenticationException, DAOException{
-//		Usuario usuarioBD = usuarioDAO.buscaPorEmail(usuario.getEmail());
+		Usuario usuarioBD = usuarioDAO.buscaPorEmail(usuario.getEmail());
 		
 		
 //		if(usuarioBD != null){

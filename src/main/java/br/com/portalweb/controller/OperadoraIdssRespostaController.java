@@ -1,5 +1,7 @@
 package br.com.portalweb.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,12 @@ public class OperadoraIdssRespostaController {
 	@RequestMapping(value = "/operadoraIdssResposta", method = RequestMethod.POST , headers = {"content-type=application/json"})
 	public @ResponseBody List<OperadoraRespostaIdss> operadoraIdss(@RequestBody CadOperadoraIdss operadoraIdssVal) throws DAOException {
 		List<OperadoraRespostaIdss> operadoraIdssLista = operadoraIdssRespostaDAO.listaCadOperadoraRespostas(operadoraIdssVal);
+		
+		for(OperadoraRespostaIdss det : operadoraIdssLista){ 
+			det.setOperadoraIdss(operadoraIdssVal);
+		}
+		
+		
 		return operadoraIdssLista;
 		
 	}	
@@ -33,12 +41,14 @@ public class OperadoraIdssRespostaController {
 
 	@Transactional
 	@RequestMapping(value = "/editarCadOperadoraIdssRespostas", method = RequestMethod.PUT, headers = {"content-type=application/json"})
-	public @ResponseBody void editarCadOperadoraIdssResposta(@RequestBody List<OperadoraRespostaIdss> operadoraIdssRespostas) throws DAOException {
+	public @ResponseBody void editarCadOperadoraIdssResposta(@RequestBody OperadoraRespostaIdss[] operadoraIdssRespostas) throws DAOException {
 		//cadOperadoraIdssDAO.update(operadoraIdss);
 		
-		if (!operadoraIdssRespostas.isEmpty()){
+		List<OperadoraRespostaIdss> lista = Arrays.asList(operadoraIdssRespostas);
+		
+		if (!lista.isEmpty()){
 			
-			for (OperadoraRespostaIdss resposta : operadoraIdssRespostas){
+			for (OperadoraRespostaIdss resposta : lista){
 				operadoraIdssRespostaDAO.update(resposta);
 			}
 			
