@@ -32,6 +32,7 @@ public class OperadoraIdssRespostaController {
 			det.setOperadoraIdss(operadoraIdssVal);
 		}
 		
+		
 		return operadoraIdssLista;
 		
 	}	
