@@ -1,6 +1,5 @@
 package br.com.portalweb.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,22 +27,13 @@ public class OperadoraIdssRespostaController {
 	@RequestMapping(value = "/operadoraIdssResposta", method = RequestMethod.POST , headers = {"content-type=application/json"})
 	public @ResponseBody List<OperadoraRespostaIdss> operadoraIdss(@RequestBody CadOperadoraIdss operadoraIdssVal) throws DAOException {
 		List<OperadoraRespostaIdss> operadoraIdssLista = operadoraIdssRespostaDAO.listaCadOperadoraRespostas(operadoraIdssVal);
-		
-		for(OperadoraRespostaIdss det : operadoraIdssLista){ 
-			det.setOperadoraIdss(operadoraIdssVal);
-		}
-		
-		
 		return operadoraIdssLista;
 		
 	}	
 	
-
 	@Transactional
 	@RequestMapping(value = "/editarCadOperadoraIdssRespostas", method = RequestMethod.PUT, headers = {"content-type=application/json"})
 	public @ResponseBody void editarCadOperadoraIdssResposta(@RequestBody OperadoraRespostaIdss[] operadoraIdssRespostas) throws DAOException {
-		//cadOperadoraIdssDAO.update(operadoraIdss);
-		
 		List<OperadoraRespostaIdss> lista = Arrays.asList(operadoraIdssRespostas);
 		
 		if (!lista.isEmpty()){

@@ -22,7 +22,7 @@
 
 </head>
 
-<body ng-app ng-controller="cadOperadoraController">
+<body ng-app id="ng-app" ng-controller="cadOperadoraController">	
 	
 	<div class=container id="cadOperadorasAddEditInfo" >
 
@@ -148,10 +148,10 @@
 						
 						<tr>
 							<td>E-mail do responsável</td>
-							<td class="emailResponsavel" >{{operadora.emailResponsavel}}</td>
+							<td class="emailResponsavel" >{{operadora.emailResponsavel | lowercase }}</td>
 
 							<td>Site</td>
-							<td class="site" ><a href="{{operadora.site}}" >{{operadora.site}}</a></td>
+							<td class="site" ><a href="{{operadora.site}}" >{{operadora.site | lowercase }}</a></td>
 						</tr>	
 						
 					</tbody>
@@ -245,12 +245,9 @@
 									<div style="padding-left: 5%" ng-show="resposta.questaoIdss.questaoPai != null" > {{resposta.questaoIdss.questaoPai.ordem}}.{{resposta.questaoIdss.ordem}} - {{resposta.questaoIdss.questao}}</div>
 							</td>
 							
-							<!--  <td>{{resposta.notaIdss * 10 | number:3}}</td>-->
-							
 							<td> 
-								<input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" />
-							</td>																					
-							 
+								<input type="number" ng-model="resposta.notaIdss"  ng-value="resposta.notaIdss" />								
+							</td>	
 						</tr>
 					</tbody>		
 				</table>			

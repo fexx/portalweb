@@ -38,6 +38,17 @@ public class JPAOperadoraRespostaIdss extends JPADAO<OperadoraRespostaIdss, Long
 		jpql.setParameter("cadOperadoraIdssVal", cadOperadoraIdss);
 		
 		lista = jpql.getResultList();
+		
+		if (!lista.isEmpty()){
+			
+			for (OperadoraRespostaIdss det : lista){
+				
+				det.setOperadoraIdss(cadOperadoraIdss);
+				
+			}
+			
+		}
+		
 		return lista;
 	}
 	

@@ -34,8 +34,7 @@ public class OperadoraRespostaIdss implements BaseEntity<Long>, Serializable {
 	private Long id;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_OPER_IDSS")
-	@JsonBackReference
+	@JoinColumn(name = "ID_OPER_IDSS")	
 	private CadOperadoraIdss operadoraIdss;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

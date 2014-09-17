@@ -101,7 +101,7 @@ function cadOperadoraController($scope, $window, $http) {
 	 * BUSCAR RESPOSTAS AO QUESTIONARIO IDSS
 	 * */
 	$scope.respostaIdss = function (idssOperadora) {
-		$scope.operadoraIdss = idssOperadora;
+		//$scope.operadoraIdss = idssOperadora;
 		/*
 		 * EXIBE DIV COM NOTAS QUE COMPOE IDSS
 		 * */
@@ -116,6 +116,7 @@ function cadOperadoraController($scope, $window, $http) {
     	});
 		
 	}
+	
 	/*
 	 * FECHAR O PAINEL DE RESPOSTAS DA OPERADORA IDSS SELECIONADO E INVALIDAR O OBJETO DE RESPOSTAS
 	 * */
@@ -257,9 +258,6 @@ function cadOperadoraController($scope, $window, $http) {
 		var operadoraIdss = angular.toJson($scope.operadoraIdss);
 		$http.put('/portalweb/cadOperadoraIdssResposta/editarCadOperadoraIdssRespostas', operadoraIdssRespostas ).success(function(data){
     		//TODO: IMPLEMENTAR CASO DE FALHA E SUCESSO IMPRIMINDO EM TELA O ERRO OCORRIDO
-			
-			console.log("agora foi heeeem");
-			
 		});
 	}
 	
